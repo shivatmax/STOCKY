@@ -1,106 +1,82 @@
-# AI Crew for Stock Analysis
-## Introduction
-This project is an example using the CrewAI framework to automate the process of analyzing a stock. CrewAI orchestrates autonomous AI agents, enabling them to collaborate and execute complex tasks efficiently.
+# Stocky AI - Stock Analysis Application 🚀
 
-By [@joaomdmoura](https://x.com/joaomdmoura)
+Stocky AI is an intelligent stock analysis application that helps users research and analyze companies using AI-powered insights. Built with Streamlit and powered by AI agents, it provides comprehensive stock analysis and research capabilities.
 
-- [CrewAI Framework](#crewai-framework)
-- [Running the script](#running-the-script)
-- [Details & Explanation](#details--explanation)
-- [Using GPT 3.5](#using-gpt-35)
-- [Using Local Models with Ollama](#using-local-models-with-ollama)
-- [Contributing](#contributing)
-- [Support and Contact](#support-and-contact)
-- [License](#license)
+## Features ✨
 
-## CrewAI Framework
-CrewAI is designed to facilitate the collaboration of role-playing AI agents. In this example, these agents work together to give a complete stock analysis and investment recommendation
+- Company research and analysis powered by AI agents
+- Real-time stock data analysis and visualization
+- Automated PDF report generation with company logos and branding
+- Clean and intuitive Streamlit web interface
+- Multi-agent system for in-depth analysis:
+  - Research Analyst: Gathers company information and news
+  - Financial Analyst: Analyzes financial metrics and performance
+  - Investment Advisor: Provides investment recommendations
 
-## Running the Script
-It uses GPT-4 by default so you should have access to that to run it.
+## Getting Started 🛠️
 
-***Disclaimer:** This will use gpt-4 unless you changed it 
-not to, and by doing so it will cost you money.*
+1. Clone the repository:
 
-- **Configure Environment**: Copy ``.env.example` and set up the environment variables for [Browseless](https://www.browserless.io/), [Serper](https://serper.dev/), [SEC-API](https://sec-api.io) and [OpenAI](https://platform.openai.com/api-keys)
-- **Install Dependencies**: Run `poetry install --no-root`.
-- **Execute the Script**: Run `poetry run python3 main.py`. (Note: execute from the directory containing main.pyy)
+   ```bash
+   git clone https://github.com/shivatmax/STOCKY.git
+   ```
 
-## Details & Explanation
-- **Running the Script**: Execute `python main.py`` and input the company to be analyzed when prompted. The script will leverage the CrewAI framework to analyze the company and generate a detailed report.
-- **Key Components**:
-  - `./main.py`: Main script file.
-  - `./stock_analysis_tasks.py`: Main file with the tasks prompts.
-  - `./stock_analysis_agents.py`: Main file with the agents creation.
-  - `./tools`: Contains tool classes used by the agents.
+2. Install dependencies using Poetry:
 
-## Using GPT 3.5
-CrewAI allow you to pass an llm argument to the agent construtor, that will be it's brain, so changing the agent to use GPT-3.5 instead of GPT-4 is as simple as passing that argument on the agent you want to use that LLM (in `main.py`).
-```python
-from langchain.chat_models import ChatOpenAI
+   ```bash
+   poetry install
+   ```
 
-llm = ChatOpenAI(model='gpt-3.5') # Loading GPT-3.5
+3. Required Python version:
 
-def local_expert(self):
-	return Agent(
-      role='The Best Financial Analyst',
-      goal="""Impress all customers with your financial data 
-      and market trends analysis""",
-      backstory="""The most seasoned financial analyst with 
-      lots of expertise in stock market analysis and investment
-      strategies that is working for a super important customer.""",
-      verbose=True,
-      llm=llm, # <----- passing our llm reference here
-      tools=[
-        BrowserTools.scrape_and_summarize_website,
-        SearchTools.search_internet,
-        CalculatorTools.calculate,
-        SECTools.search_10q,
-        SECTools.search_10k
-      ]
-    )
-```
+   - Python >= 3.12 and <= 3.13
 
-## Using Local Models with Ollama
-The CrewAI framework supports integration with local models, such as Ollama, for enhanced flexibility and customization. This allows you to utilize your own models, which can be particularly useful for specialized tasks or data privacy concerns.
+4. Main dependencies:
 
-### Setting Up Ollama
-- **Install Ollama**: Ensure that Ollama is properly installed in your environment. Follow the installation guide provided by Ollama for detailed instructions.
-- **Configure Ollama**: Set up Ollama to work with your local model. You will probably need to [tweak the model using a Modelfile](https://github.com/jmorganca/ollama/blob/main/docs/modelfile.md), I'd recommend adding `Observation` as a stop word and playing with `top_p` and `temperature`.
+   - crewai[tools] >= 0.41.1
+   - python-dotenv >= 1.0.1
+   - html2text >= 2024.2.26
+   - sec-api >= 1.0.20
+   - setuptools >= 75.6.0
 
-### Integrating Ollama with CrewAI
-- Instantiate Ollama Model: Create an instance of the Ollama model. You can specify the model and the base URL during instantiation. For example:
+5. Set up environment variables:
+   Create a `.env` file in the root directory with:
+   ```bash
+   SERPER_API_KEY=your_serper_api_key # https://serper.dev/ (free tier)
+   SEC_API_API_KEY=your_sec_api_key # https://sec-api.io/ (free tier)
+   OPENAI_API_KEY=your_openai_api_key
+   ```
 
-```python
-from langchain.llms import Ollama
-ollama_openhermes = Ollama(model="openhermes")
-# Pass Ollama Model to Agents: When creating your agents within the CrewAI framework, you can pass the Ollama model as an argument to the Agent constructor. For instance:
+## Usage 📱
 
-def local_expert(self):
-	return Agent(
-      role='The Best Financial Analyst',
-      goal="""Impress all customers with your financial data 
-      and market trends analysis""",
-      backstory="""The most seasoned financial analyst with 
-      lots of expertise in stock market analysis and investment
-      strategies that is working for a super important customer.""",
-      verbose=True,
-      llm=ollama_openhermes, # Ollama model passed here
-      tools=[
-        BrowserTools.scrape_and_summarize_website,
-        SearchTools.search_internet,
-        CalculatorTools.calculate,
-        SECTools.search_10q,
-        SECTools.search_10k
-      ]
-    )
-```
+1. Start the application:
 
-### Advantages of Using Local Models
-- **Privacy**: Local models allow processing of data within your own infrastructure, ensuring data privacy.
-- **Customization**: You can customize the model to better suit the specific needs of your tasks.
-- **Performance**: Depending on your setup, local models can offer performance benefits, especially in terms of latency.
+   ```bash
+   streamlit run src/stock_analysis/main.py
+   ```
 
-## License
-This project is released under the MIT License.
-# STOCKY
+2. Enter a company name in the search box
+
+3. Click "Generate Stock Report" to analyze the company
+
+4. View the comprehensive analysis and download the PDF report
+
+## Contributing 🤝
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License 📄
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments 🙏
+
+- Thanks to the Streamlit team for the amazing framework
+- OpenAI for providing the AI capabilities
+- All contributors who help improve this project

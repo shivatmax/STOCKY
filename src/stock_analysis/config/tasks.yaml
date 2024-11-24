@@ -1,0 +1,98 @@
+financial_analysis:
+  description: >
+    As a financial analyst, analyze {company_stock}'s financial health and market performance by:
+    - Examining key metrics including P/E ratio, EPS growth, revenue trends, debt-to-equity ratio
+    - Comparing performance against industry peers and market benchmarks
+    - Reviewing quarterly and annual financial statements
+    - Analyzing cash flow and profitability metrics
+    - Evaluating capital structure and debt levels
+    - Assessing operational efficiency ratios
+
+  expected_output: >
+    Provide a detailed financial analysis report with:
+    - Executive summary of key findings
+    - Comprehensive analysis of all financial metrics examined
+    - Peer comparison data and insights
+    - Clear assessment of financial strengths and weaknesses
+    - Supporting data tables and charts
+    - Recent financial performance trends
+    - Risk factors identified from the analysis
+    Use the most current data available and format the report professionally.
+
+research:
+  description: >
+    As a research analyst, conduct comprehensive market research on {company_stock} by:
+    - Gathering recent news articles, press releases, and analyst reports
+    - Identifying significant market events and company developments
+    - Analyzing market sentiment and investor reactions
+    - Tracking upcoming events (earnings calls, product launches, etc.)
+    - Monitoring industry trends and competitive landscape
+    - Reviewing analyst price targets and recommendations
+
+  expected_output: >
+    Deliver a structured research report including:
+    - Summary of key news and developments
+    - Market sentiment analysis with supporting evidence
+    - Calendar of upcoming material events
+    - Industry positioning and competitive analysis
+    - Analyst consensus and price targets
+    - Stock ticker reference as {company_stock}
+    Present findings using the most recent data available.
+
+filings_analysis:
+  description: >
+    As a financial analyst specializing in SEC filings, analyze {company_stock}'s latest 10-Q and 10-K by:
+    - Reviewing Management Discussion & Analysis section
+    - Examining financial statements in detail
+    - Tracking insider trading patterns
+    - Identifying risk factors and disclosures
+    - Analyzing segment performance
+    - Evaluating accounting policies and notes
+    - Comparing year-over-year changes
+
+  expected_output: >
+    Generate a comprehensive filings analysis report with:
+    - Executive summary of key findings
+    - Detailed analysis of financial statements
+    - Notable changes in business operations or strategy
+    - Risk assessment and red flags identified
+    - Insider trading activity summary
+    - Material developments disclosed
+    - Recommendations based on findings
+    Format the report clearly with sections and supporting data.
+
+recommend:
+  description: >
+    As an investment advisor, synthesize all analyses to provide investment guidance by:
+    - Reviewing financial analysis findings
+    - Evaluating market research insights
+    - Assessing SEC filing revelations
+    - Analyzing insider trading patterns
+    - Considering upcoming catalysts and events
+    - Weighing risks against potential returns
+    - Developing specific investment strategies
+
+  expected_output: >
+    Deliver a professional investment recommendation report including:
+    1. Executive Summary
+       - Clear investment stance (Buy/Sell/Hold)
+       - Target price range
+       - Risk rating
+
+    2. Supporting Evidence
+       - Latest financial metrics and trends
+       - Recent news and market developments
+       - Key findings from SEC filings
+       - Insider trading activity summary
+
+    3. Upcoming Catalysts
+       - Earnings dates
+       - Product launches
+       - Other material events
+
+    4. Investment Strategy
+       - Entry/exit points
+       - Position sizing recommendations
+       - Risk management guidelines
+
+    Format the report professionally with clear sections, data visualizations, and actionable insights.
